@@ -12,6 +12,13 @@ struct EarthquakesApp: App {
     var body: some Scene {
         WindowGroup {
             Quakes()
+                .onAppear(perform: {
+                    printFunctionName(3)
+                })
         }
     }
+    func printFunctionName(_ param: Int){
+        print(#function)
+    }
+
 }
