@@ -30,6 +30,7 @@ struct GeoJSON: Decodable {
     
     private enum FeatureCodingKeys: String, CodingKey {
         case properties
+        case geometry
     }
     
     private(set) var quakes: [Quake] = []
