@@ -46,4 +46,14 @@ final class EarthquakesTests: XCTestCase {
         
     }
     
+    
+    func testClientDoesFetchEarthquakeData() async throws{
+        let testDownloader = TestDownloader()
+        let quakeClient = QuakeClient(downloader: testDownloader)
+        let quakes = try await quakeClient.quakes
+        
+        XCTAssertEqual(quakes.count, 6)
+        
+    }
+    
 }

@@ -9,14 +9,16 @@ import SwiftUI
 
 @main
 struct EarthquakesApp: App {
+    @StateObject private var quakesProvider = QuakesProvider()
+    
     var body: some Scene {
         WindowGroup {
             Quakes()
-                .onAppear(perform: {
-                    printFunctionName(3)
-                })
+                .environmentObject(quakesProvider)
         }
     }
+    
+    
     func printFunctionName(_ param: Int){
         print(#function)
     }

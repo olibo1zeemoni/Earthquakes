@@ -35,7 +35,7 @@ struct QuakeLocation: Decodable {
 
 
 extension QuakeLocation.OriginProperties: Decodable {
-    
+    ///CodingKeys necessary because model properties are of type Double but are strings in the JSON
     private enum OriginPropertiesCodingKeys: String, CodingKey {
         case latitude
         case longitude
