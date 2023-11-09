@@ -53,3 +53,10 @@ extension QuakeLocation.OriginProperties: Decodable {
         self.latitude = latitude
     }
 }
+
+
+extension QuakeLocation {
+    init(latitude: Double, longitude: Double) {
+        self.properties = RootProperties(products: Products(origin: [Origin(properties: OriginProperties(latitude: latitude, longitude: longitude))]))
+    }
+}

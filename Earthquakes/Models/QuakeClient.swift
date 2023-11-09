@@ -30,6 +30,9 @@ actor QuakeClient {
             let data =  try await downloader.httpData(from: feedURL)
             let allQuakes = try decoder.decode(GeoJSON.self, from: data)
             var updatedQuakes = allQuakes.quakes
+            //MARK: come back
+            let _ = updatedQuakes.map({$0.time.timeIntervalSince1970 > 3600}).startIndex
+            
             ///request the location for all the earthquakes in the past hour
             if let olderThanOneHour = updatedQuakes.firstIndex(where: { $0.time.timeIntervalSince1970 > 3600 }) {
                 let indexRange = updatedQuakes.startIndex..<olderThanOneHour

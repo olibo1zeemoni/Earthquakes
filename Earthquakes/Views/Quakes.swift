@@ -36,7 +36,13 @@ struct Quakes: View {
         NavigationView {
             List(selection: $selection) {
                 ForEach(quakesProvider.quakes) { quake in
-                    QuakeRow(quake: quake)
+                    NavigationLink {
+                        QuakeDetail(quake: quake)
+                    } label: {
+                        QuakeRow(quake: quake)
+
+                    }
+
                 }
                 .onDelete(perform: deleteQuakes)
             }
